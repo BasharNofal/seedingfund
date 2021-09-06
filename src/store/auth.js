@@ -9,13 +9,8 @@ const authReducer = (state, action) => {
 	let userInfo = {},
 		isLoggedIn = false;
 	switch (type) {
-		case "SIGN_UP":
-			userInfo = payload;
-			isLoggedIn = true;
-			return { userInfo, isLoggedIn };
-
 		case "SIGN_IN":
-			userInfo = payload;
+			userInfo = {...payload};
 			isLoggedIn = true;
 			return { userInfo, isLoggedIn };
 
