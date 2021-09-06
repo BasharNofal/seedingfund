@@ -4,12 +4,12 @@ import {useDispatch, useSelector} from 'react-redux';
 function Signin() {
 
     const dispatch = useDispatch();
-    const state = useSelector(state => {
-        return {
-            userInfo: state.userInfo,
-            isLoggedIn: state.isLoggedIn
-        }
-    });
+    // const state = useSelector(state => {
+    //     return {
+    //         userInfo: state.userInfo,
+    //         isLoggedIn: state.isLoggedIn
+    //     }
+    // });
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -18,7 +18,7 @@ function Signin() {
         const userInfo = {username, password};
 
         dispatch(signinAuth(userInfo));
-        console.log(state);
+        // console.log(state);
     }
 
 	return (
@@ -26,7 +26,7 @@ function Signin() {
 			<form onSubmit={(event)=>handleSubmit(event)}>
                 <input type="text" name="username" placeholder="Username" required/>
                 <input type="password" name="password" placeholder="Password" required/>
-                <button type="submit">Sign Up</button>
+                <button type="submit">Log in</button>
             </form>
 		</div>
 	);

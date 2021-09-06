@@ -8,7 +8,7 @@ export const signUpAuth = (data) => {
 			const response = await superagent
 				.post(`${api}/auth/signup`)
 				.send({ ...data });
-			console.log("response", response.body);
+			// console.log("response", response.body);
 			const { user } = response.body;
 			dispatch(signin(user));
 		} catch (error) {
@@ -25,7 +25,7 @@ export const signinAuth = (userInfo) => {
 		};
 
 		async function setLogin() {
-			console.log({ userInfo });
+			// console.log({ userInfo });
 			try {
 				const response = await superagent
 					.post(`${api}/auth/signin`)
