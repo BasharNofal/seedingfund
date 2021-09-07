@@ -8,23 +8,23 @@ import FormSelect from "react-bootstrap/FormSelect";
 import "./projects-form.scss";
 
 function ProjectsForm() {
-    let dispatch = useDispatch();
-    const state = useSelector(state=> {
-        return {
-            userInfo:state.userInfo.userInfo,
-            arrOfProjects: state.arrOfProjects
-        }
-    });
+	let dispatch = useDispatch();
+	const state = useSelector((state) => {
+		return {
+			userInfo: state.userInfo.userInfo,
+			arrOfProjects: state.arrOfProjects,
+		};
+	});
 
 	const handleSubmit = (event) => {
-        event.preventDefault();
-        const projectName = event.target.projectName.value;
-        const projectDescription = event.target.projectDescription.value;
-        const projectSector = event.target.projectSector.value;
-        const userId = state.userInfo._id;
+		event.preventDefault();
+		const projectName = event.target.projectName.value;
+		const projectDescription = event.target.projectDescription.value;
+		const projectSector = event.target.projectSector.value;
+		const userId = state.userInfo._id;
 
-        const data = {projectName, projectDescription, projectSector, userId}
-        dispatch(addProjectAction(data))
+		const data = { projectName, projectDescription, projectSector, userId };
+		dispatch(addProjectAction(data));
 	};
 
 	return (
@@ -41,8 +41,15 @@ function ProjectsForm() {
 					/>
 				</FormGroup>
 				<FormGroup className="mb-3">
-					<FormSelect name="projectSector" aria-label="Default select example" className="input_fields">
-						<option disabled selected hidden>Choose Project Sector</option>
+					<FormSelect
+						name="projectSector"
+						aria-label="Default select example"
+						className="input_fields"
+						required
+					>
+						<option disabled selected hidden>
+							Choose Project Sector
+						</option>
 						<option value="Industry">Industry</option>
 						<option value="Real Estate">Real Estate</option>
 						<option value="Retail">Retail</option>
@@ -54,10 +61,11 @@ function ProjectsForm() {
 				>
 					<FormControl
 						name="projectDescription"
-                        className="input_fields"
+						className="input_fields"
 						as="textarea"
 						rows={4}
 						placeholder="Enter Project Description"
+						required
 					/>
 				</FormGroup>
 				<Button variant="primary" type="submit">
