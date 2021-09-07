@@ -1,12 +1,14 @@
 #cards_container{
+    margin: auto;
+    margin-top: 3%;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     list-style: none;
 
     li {
-        margin: 1%;
-
+        margin: 2% 1%;
         .card {
             box-shadow: #2A2C38 0px 0px 3px;
             border-radius: 0;

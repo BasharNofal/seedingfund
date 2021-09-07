@@ -39,6 +39,13 @@ function Header() {
 										Add Project
 									</NavLink>
 								</li>
+                                <If condition={state.userInfo.userType === "admin"}>
+                                    <Then>
+                                        <li>
+                                            <NavLink exact to="/chart" >Projects Chart</NavLink>
+                                        </li>
+                                    </Then>
+                                </If>
 								<li>
 									<NavLink to="/nothing">Contact Us</NavLink>
 								</li>

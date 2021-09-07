@@ -1,5 +1,5 @@
 import { signinAuth } from "../../store/actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import FormGroup from "react-bootstrap/FormGroup";
@@ -11,12 +11,6 @@ import "./sign-in-up.scss";
 
 function Signin() {
 	const dispatch = useDispatch();
-	// const state = useSelector(state => {
-	//     return {
-	//         userInfo: state.userInfo,
-	//         isLoggedIn: state.isLoggedIn
-	//     }
-	// });
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -53,6 +47,7 @@ function Signin() {
                         name="password"
 						type="password"
 						placeholder="Password"
+                        autoComplete="false"
                         required
 					/>
 				</FormGroup>
@@ -66,11 +61,6 @@ function Signin() {
 					You Don't Have an Account ?, <NavLink to="/sign_up">Sign up</NavLink> Now
 				</FormText>
 			</Form>
-			{/* <form onSubmit={(event)=>handleSubmit(event)}>
-                <input type="text" name="username" placeholder="Username" required/>
-                <input type="password" name="password" placeholder="Password" required/>
-                <button type="submit">Log in</button>
-            </form> */}
 		</div>
 	);
 }
