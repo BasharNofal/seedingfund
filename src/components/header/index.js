@@ -11,6 +11,7 @@ function Header() {
 	const state = useSelector((state) => {
 		return {
 			isLoggedIn: state.userInfo.isLoggedIn,
+            userInfo: state.userInfo.userInfo
 		};
 	});
 

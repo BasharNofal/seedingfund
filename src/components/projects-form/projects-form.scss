@@ -1,0 +1,27 @@
+.add_project{
+    margin: auto;
+    margin-top: 5%;
+    width: 45%;
+    padding-block: 4%;
+    box-shadow: #2A2C38 0px 0px 6px;
+
+    h3 {
+        color: #2A2C38;
+        text-align: center;
+        margin-bottom: 2%;
+        margin-top: 0px;
+    }
+
+    form {
+        margin-left: 20%;
+        .input_fields {
+            border-radius: 0px;
+            width: 75%;
+        }
+
+        button {
+            border-radius: 0px;
+            width: 75%;
+        }
+    }
+}

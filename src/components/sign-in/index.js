@@ -19,7 +19,6 @@ function Signin() {
 	// });
 
 	const handleSubmit = (event) => {
-        console.log('test')
 		event.preventDefault();
 		const username = event.target.username.value;
 		const password = event.target.password.value;
