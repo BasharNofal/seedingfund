@@ -21,7 +21,8 @@ export const signinAuth = (userInfo) => {
 	return (dispatch) => {
 		setLogin();
 		const validateToken = (response) => {
-			dispatch(signin(response.user));
+            // console.log(response)
+			dispatch(signin(response));
 		};
 
 		async function setLogin() {
@@ -49,22 +50,24 @@ export const getAllProjectsAction = () => {
 	return async (dispatch) => {
 		try {
 			const response = await superagent.get(
-				`${api}/projects/getAllProjects`
+				`${api}/projects/getAll`
 			);
-			dispatch(getProjects(response));
+			dispatch(getProjects(response.body));
 		} catch (error) {
 			throw new Error(error);
 		}
 	};
 };
 
-export const getAllProjectsByIdAction = (data) => {
+export const getAllProjectsByIdAction = (userId) => {
 	return async (dispatch) => {
 		try {
+            console.log({userId})
 			const response = await superagent.get(
-				`${api}/projects/getAllById/${data.userId}`
+				`${api}/projects/getAllById/${userId}`
 			);
-			dispatch(getProjects(response));
+            console.log({response})
+			dispatch(getProjects(response.body));
 		} catch (error) {
 			throw new Error(error);
 		}
@@ -77,20 +80,22 @@ export const addProjectAction = (data) => {
             const response = await superagent
             .post(`${api}/projects/addProject`)
             .send({ ...data });
-			dispatch(addProject(response));
+            console.log(response.body.data)
+			dispatch(addProject(response.body.data));
 		} catch (error) {
             throw new Error(error);
 		}
 	};
 };
 
-export const updateProjectStateAction = (data) => {
+export const updateProjectStateAction = (projectState, id) => {
     return async (dispatch) => {
         try {
             const response = await superagent
-            .post(`${api}/projects/updateState/${data._id}`)
-            .send({ ...data });
-			dispatch(updateProjectState(response));
+            .put(`${api}/projects/updateState/${id}`)
+            .send({ ...projectState });
+            console.log('UPDATE RESPONSE ================',response.body)
+			dispatch(updateProjectState(response.body.data));
 		} catch (error) {
             throw new Error(error);
 		}
@@ -100,7 +105,7 @@ export const updateProjectStateAction = (data) => {
 export const signOut = () => {
     return {
         type: "SIGN_OUT",
-        // payload: 'nothing'
+        payload: 'nothing'
     }
 }
 

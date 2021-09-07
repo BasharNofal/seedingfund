@@ -1,0 +1,24 @@
+#cards_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    list-style: none;
+
+    li {
+        margin: 1%;
+
+        .card {
+            box-shadow: #2A2C38 0px 0px 3px;
+            border-radius: 0;
+            #buttons_div{
+                text-align: center;
+                button {
+                    border-radius: 0;
+                    width: 35%;
+                    margin-inline: 3.5%;
+                }
+            }
+        }
+
+    }
+}
