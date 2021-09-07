@@ -72,30 +72,37 @@ export const getAllProjectsByIdAction = (data) => {
 };
 
 export const addProjectAction = (data) => {
-	return async (dispatch) => {
-		try {
-			const response = await superagent
-				.post(`${api}/projects/addProject`)
-				.send({ ...data });
+    return async (dispatch) => {
+        try {
+            const response = await superagent
+            .post(`${api}/projects/addProject`)
+            .send({ ...data });
 			dispatch(addProject(response));
 		} catch (error) {
-			throw new Error(error);
+            throw new Error(error);
 		}
 	};
 };
 
 export const updateProjectStateAction = (data) => {
-	return async (dispatch) => {
-		try {
-			const response = await superagent
-				.post(`${api}/projects/updateState/${data._id}`)
-				.send({ ...data });
+    return async (dispatch) => {
+        try {
+            const response = await superagent
+            .post(`${api}/projects/updateState/${data._id}`)
+            .send({ ...data });
 			dispatch(updateProjectState(response));
 		} catch (error) {
-			throw new Error(error);
+            throw new Error(error);
 		}
 	};
 };
+
+export const signOut = () => {
+    return {
+        type: "SIGN_OUT",
+        // payload: 'nothing'
+    }
+}
 
 const signin = (payload) => {
 	return {
@@ -103,6 +110,7 @@ const signin = (payload) => {
 		payload,
 	};
 };
+
 
 const getProjects = (payload) => {
 	return {

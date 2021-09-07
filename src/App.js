@@ -7,7 +7,7 @@ import Header from "./components/header";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { If, Else } from "react-if";
-import "./App.css";
+import "./App.scss";
 
 function App() {
 	const state = useSelector((state) => {
@@ -17,22 +17,24 @@ function App() {
 	});
 	let history = useHistory();
 	useEffect(() => {
-			if(!state.isLoggedIn) {
-				history.push('/register')
-			} else {
-				
-				history.push('/')
-			}
+		if (!state.isLoggedIn) {
+			history.push("/log_in");
+		} else {
+			history.push("/");
+		}
 	}, [state.isLoggedIn]);
 
 	return (
 		<div className="App">
 			<Header />
-			<Switch>
-				<Route exact path="/" component={Projects} />
-				<Route exact path="/add_Project" component={ProjectsForm} />
-				<Route exact path="/register" component={Signin} />
-			</Switch>
+			<main>
+				<Switch>
+					<Route exact path="/" component={Projects} />
+					<Route exact path="/add_Project" component={ProjectsForm} />
+					<Route exact path="/log_in" component={Signin} />
+					<Route exact path="/sign_up" component={SignUp}/>
+				</Switch>
+			</main>
 		</div>
 	);
 }

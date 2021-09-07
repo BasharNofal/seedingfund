@@ -1,5 +1,5 @@
 header {
-    box-shadow: black 0px 0px 3px;
+    box-shadow: #6b6d74 0px 0px 3px;
 
     #logo_and_nav {
         display: grid;
@@ -10,9 +10,12 @@ header {
 
         nav {
             align-self: center;
-
+            text-align: right;
             ul {
+                margin-block: auto;
                 li {
+                    // font-weight: bolder;
+                    font-size: larger;
                     margin-inline: 1.5%;
                     list-style: none;
                     display: inline;
@@ -31,11 +34,13 @@ header {
             }
         }
         div {
+            text-align: left;
             img {
-                width: 10em;
+                width: 12em;
                 height: 7em;
             }
         }
+
     }
     #info_bar { 
         padding-block: 0.5%;
@@ -53,6 +58,14 @@ header {
                 color: #3B7EFF;
                 margin-inline: 0.5%;
             }
+        }
+    }
+
+    #logo{
+        text-align: center;
+        img {
+            width: 13em;
+            height: 8em;
         }
     }
 }

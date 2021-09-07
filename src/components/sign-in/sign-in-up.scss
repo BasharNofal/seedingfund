@@ -1,0 +1,32 @@
+.sign_in_up {
+    margin: auto;
+    margin-top: 5%;
+    // text-align: center;
+    width: 35%;
+    padding-block: 4%;
+    box-shadow: #2A2C38 0px 0px 6px;
+
+    h3 {
+        color: #2A2C38;
+        text-align: center;
+        margin-bottom: 2%;
+        margin-top: 0px;
+    }
+
+    form {
+        margin-left: 25%;
+        .input_fields {
+            border-radius: 0px;
+            width: 70%;
+        }
+
+        button {
+            border-radius: 0px;
+            width: 70%;
+        }
+        
+        small {
+            display: block;
+        }
+    }
+}
