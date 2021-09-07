@@ -1,30 +1,31 @@
 import InfoBar from "./info-bar";
-import { If, Then } from "react-if";
+import { If, Then, Else } from "react-if";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { signOut } from "../../store/actions";
+import { useDispatch } from "react-redux";
 import "./header.scss";
 
 function Header() {
+	const dispatch = useDispatch();
 	const state = useSelector((state) => {
 		return {
 			isLoggedIn: state.userInfo.isLoggedIn,
 		};
 	});
 
-    console.log(state.isLoggedIn)
-
 	return (
 		<header>
 			<InfoBar />
-			<div id="logo_and_nav">
-				<div>
-					<img
-						src="./assets/large_seedingfund-01.png"
-						alt="Seedingfund logo"
-					/>
-				</div>
-				<If condition={state.isLoggedIn}>
-					<Then>
+			<If condition={state.isLoggedIn}>
+				<Then>
+					<div id="logo_and_nav">
+						<div>
+							<img
+								src="./assets/large_seedingfund-01.png"
+								alt="Seedingfund logo"
+							/>
+						</div>
 						<nav>
 							<ul>
 								<li>
@@ -41,13 +42,23 @@ function Header() {
 									<NavLink to="/nothing">Contact Us</NavLink>
 								</li>
 								<li>
-									<NavLink to="/register">Sign out</NavLink>
+									<NavLink
+										to="/log_in"
+										onClick={() => dispatch(signOut())}
+									>
+										Sign out
+									</NavLink>
 								</li>
 							</ul>
 						</nav>
-					</Then>
-				</If>
-			</div>
+					</div>
+				</Then>
+                <Else>
+                    <div id="logo">
+                        <img src="./assets/large_seedingfund-01.png" alt="" />
+                    </div>
+                </Else>
+			</If>
 		</header>
 	);
 }
