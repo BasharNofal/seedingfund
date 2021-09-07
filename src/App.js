@@ -1,17 +1,15 @@
 import SignUp from "./components/sign-up";
 import Signin from "./components/sign-in";
-import { getAllProjectsAction, getAllProjectsByIdAction } from "./store/actions";
 import ProjectsForm from "./components/projects-form";
 import Projects from "./components/projects";
 import { Route, Switch, useHistory } from "react-router-dom";
 import Header from "./components/header";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { If, Else } from "react-if";
 import "./App.scss";
+import ProjectsChart from "./components/chart";
 
 function App() {
-	let dispatch = useDispatch();
 	const state = useSelector((state) => {
 		return {
 			isLoggedIn: state.userInfo.isLoggedIn,
@@ -26,6 +24,7 @@ function App() {
 		} else {
 			history.push("/");
 		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [state.isLoggedIn]);
 
 	return (
@@ -37,6 +36,7 @@ function App() {
 					<Route exact path="/add_Project" component={ProjectsForm} />
 					<Route exact path="/log_in" component={Signin} />
 					<Route exact path="/sign_up" component={SignUp}/>
+					<Route exact path="/chart" component={ProjectsChart} />
 				</Switch>
 			</main>
 		</div>

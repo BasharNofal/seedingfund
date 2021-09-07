@@ -1,5 +1,5 @@
 import { signUpAuth } from "../../store/actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import FormGroup from "react-bootstrap/FormGroup";
@@ -11,12 +11,6 @@ import "../sign-in/sign-in-up.scss";
 
 function SignUp() {
 	const dispatch = useDispatch();
-	const state = useSelector((state) => {
-		return {
-			userInfo: state.userInfo,
-			isLoggedIn: state.isLoggedIn,
-		};
-	});
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -63,6 +57,7 @@ function SignUp() {
                         name="password"
 						type="password"
 						placeholder="Password"
+                        autoComplete="false"
 						required
 					/>
 				</FormGroup>
@@ -74,17 +69,11 @@ function SignUp() {
 				</Button>
 				<FormText className="text-muted">
 					You Already Have an Account,{" "}
-					<NavLink to="/log_in">Sign in</NavLink>
+					<NavLink to="/log_in">Log in</NavLink>
 				</FormText>
 			</Form>
 		</div>
 	);
 }
-{/* <form onSubmit={(event)=>handleSubmit(event)}>
-    <input type="text" name="username" placeholder="Username" required/>
-    <input type="email" name="email" placeholder="Email" required/>
-    <input type="password" name="password" placeholder="Password" required/>
-    <button type="submit">Sign Up</button>
-</form> */}
 
 export default SignUp;

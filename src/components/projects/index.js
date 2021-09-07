@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
 	getAllProjectsAction,
 	getAllProjectsByIdAction,
-    updateProjectStateAction
+	updateProjectStateAction,
 } from "../../store/actions";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -19,13 +19,17 @@ function Projects() {
 		};
 	});
 
-    const handleReject = (projectId) => {
-        dispatch(updateProjectStateAction({ projectState:"Rejected" }, projectId))
-    }
+	const handleReject = (projectId) => {
+		dispatch(
+			updateProjectStateAction({ projectState: "Rejected" }, projectId)
+		);
+	};
 
-    const handleApprove = (projectId) => {
-        dispatch(updateProjectStateAction({ projectState:"Approved" }, projectId))
-    }
+	const handleApprove = (projectId) => {
+		dispatch(
+			updateProjectStateAction({ projectState: "Approved" }, projectId)
+		);
+	};
 
 	useEffect(() => {
 		if (state.userInfo.userType === "admin") {
@@ -33,59 +37,69 @@ function Projects() {
 		} else if (state.userInfo.userType === "user") {
 			dispatch(getAllProjectsByIdAction(state.userInfo._id));
 		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	console.log(state);
 	return (
-		<div>
-			<h1>Projects</h1>
-
-			<div>
-				<ul id="cards_container">
-					{state?.arrOfProjects?.map((project) => {
-						return (
-							<li key={project._id}>
-								<Card style={{ width: "18rem" }}>
-									<Card.Body>
-										<Card.Title>
-											{project.projectName}
-										</Card.Title>
-										<Card.Subtitle className="mb-2 text-muted">
-											{project.projectSector}
-										</Card.Subtitle>
-										<Card.Text>
-											{project.projectDescription}
-										</Card.Text>
-										<If
-											condition={
-												state.userInfo.userType ===
-													"admin" &&
-												project.projectState ===
-													"Pending"
-											}
-										>
-											<Then>
-												<div id="buttons_div">
-													<Button onClick={(event)=>handleApprove(project._id)} variant="success">
-														Approve
-													</Button>
-													<Button onClick={(event)=>handleReject(project._id)} variant="danger">
-														Reject
-													</Button>
-												</div>
-											</Then>
-											<Else>
-												<Card.Text>
-													{project.projectState}
-												</Card.Text>
-											</Else>
-										</If>
-									</Card.Body>
-								</Card>
-							</li>
-						);
-					})}
-				</ul>
-			</div>
+		<div id="projects_cards_div">
+			<ul id="cards_container">
+				{state?.arrOfProjects?.map((project) => {
+					return (
+						<li key={project._id}>
+							<Card style={{ width: "18rem" }}>
+								<Card.Body>
+									<Card.Title>
+										{project.projectName}
+									</Card.Title>
+									<Card.Subtitle className="mb-2 text-muted">
+										{project.projectSector}
+									</Card.Subtitle>
+									<Card.Text>
+										{project.projectDescription}
+									</Card.Text>
+									<If
+										condition={
+											state.userInfo.userType ===
+												"admin" &&
+											project.projectState === "Pending"
+										}
+									>
+										<Then>
+											<div id="buttons_div">
+												<Button
+													onClick={(event) =>
+														handleApprove(
+															project._id
+														)
+													}
+													variant="success"
+												>
+													Approve
+												</Button>
+												<Button
+													onClick={(event) =>
+														handleReject(
+															project._id
+														)
+													}
+													variant="danger"
+												>
+													Reject
+												</Button>
+											</div>
+										</Then>
+										<Else>
+											<Card.Text>
+												{project.projectState}
+											</Card.Text>
+										</Else>
+									</If>
+								</Card.Body>
+							</Card>
+						</li>
+					);
+				})}
+			</ul>
 		</div>
 	);
 }
