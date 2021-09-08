@@ -49,13 +49,13 @@ function Projects() {
 							<Card style={{ width: "18rem" }}>
 								<Card.Body>
 									<Card.Title>
-										{project.projectName}
+										<b>Name: </b> <small>{project.projectName}</small>
 									</Card.Title>
 									<Card.Subtitle className="mb-2 text-muted">
-										{project.projectSector}
+										<b>Sector: </b> <small>{project.projectSector}</small>
 									</Card.Subtitle>
-									<Card.Text>
-										{project.projectDescription}
+									<Card.Text className="card_description">
+										<b>Description: </b> <small>{project.projectDescription}</small>
 									</Card.Text>
 									<If
 										condition={
