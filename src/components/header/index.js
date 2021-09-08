@@ -31,7 +31,7 @@ function Header() {
 							<ul>
 								<li>
 									<NavLink exact to="/">
-										Home
+										My Projects
 									</NavLink>
 								</li>
 								<li>

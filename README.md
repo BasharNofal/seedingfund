@@ -4,6 +4,13 @@ This application is an application for projects funding, where you can create an
 
 <hr>
 
+## Accounts Credentials
+
+* **Username:** admin, **Password:** 123
+* **Username:** user, **Password:** 123
+
+<hr>
+
 ## URLs
 
 [Deployed Version](https://bn-seedingfund.netlify.app)

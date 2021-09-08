@@ -12,7 +12,13 @@
         .card {
             box-shadow: #2A2C38 0px 0px 3px;
             border-radius: 0;
-            #buttons_div{
+
+            .card_description {
+                height: 70px;
+                overflow-y: auto;
+            }
+
+            #buttons_div {
                 text-align: center;
                 button {
                     border-radius: 0;
@@ -23,4 +29,22 @@
         }
 
     }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+   
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+  
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }
